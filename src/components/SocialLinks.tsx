@@ -14,7 +14,8 @@ const LeetCodeIcon = () => (
 
 const SocialLinks = () => {
   const actionButtons = [
-    { icon: Mail, label: "Contact", href: "#contact" },
+    { icon: FileText, label: "Resume", href: "/resume.pdf", download: true },
+    { icon: Mail, label: "Contact", href: "#contact", download: false },
   ];
 
   const socialLinks = [
@@ -32,7 +33,7 @@ const SocialLinks = () => {
           className="gap-2 font-mono text-xs"
           asChild
         >
-          <a href={button.href}>
+          <a href={button.href} download={button.download ? true : undefined}>
             <button.icon className="w-4 h-4" />
             {button.label}
           </a>
@@ -50,7 +51,7 @@ const SocialLinks = () => {
           className="p-2 rounded-lg border border-border bg-card hover:bg-secondary transition-colors"
           aria-label={link.label}
         >
-          <link.icon className="w-4 h-4 text-muted-foreground" />
+          <link.icon className="w-4 h-4 text-foreground" />
         </a>
       ))}
       
@@ -73,7 +74,7 @@ const SocialLinks = () => {
         className="p-2 rounded-lg border border-border bg-card hover:bg-secondary transition-colors"
         aria-label="LinkedIn"
       >
-        <Linkedin className="w-4 h-4 text-muted-foreground" />
+        <Linkedin className="w-4 h-4 text-foreground" />
       </a>
     </div>
   );
