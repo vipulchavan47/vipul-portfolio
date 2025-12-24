@@ -1,5 +1,6 @@
 import { FileText, Mail, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TerminalDialog from "./TerminalDialog";
 
 const SocialLinks = () => {
   const actionButtons = [
@@ -43,6 +44,8 @@ const SocialLinks = () => {
           <link.icon className="w-4 h-4 text-muted-foreground" />
         </a>
       ))}
+      
+      <TerminalDialog />
     </div>
   );
 };

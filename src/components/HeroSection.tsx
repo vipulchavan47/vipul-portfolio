@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Code, MapPin, Mail, Clock, User } from "lucide-react";
+import { Code, MapPin, Mail, Clock, User, Monitor } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 import TechBadge from "./TechBadge";
 import SocialLinks from "./SocialLinks";
-import TerminalVibe from "./TerminalVibe";
 
 const HeroSection = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -29,6 +28,7 @@ const HeroSection = () => {
     { icon: MapPin, label: "Navi Mumbai, India" },
     { icon: Mail, label: "vipulchavan3301@gmail.com" },
     { icon: Clock, label: formatTime(currentTime), sublabel: "// IST" },
+    { icon: Monitor, label: "Ubuntu" },
     { icon: User, label: "he/him" },
   ];
 
@@ -90,13 +90,6 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Terminal Vibe */}
-        <div 
-          className="mb-8 opacity-0 animate-fade-in"
-          style={{ animationDelay: "0.35s" }}
-        >
-          <TerminalVibe />
-        </div>
 
         {/* Action Buttons & Social Links */}
         <div 
