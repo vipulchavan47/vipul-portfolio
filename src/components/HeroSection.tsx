@@ -6,12 +6,27 @@ import SocialLinks from "./SocialLinks";
 
 const HeroSection = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "Software Engineer";
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let index = 0;
+    const typeInterval = setInterval(() => {
+      if (index <= fullText.length) {
+        setDisplayedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 100);
+    return () => clearInterval(typeInterval);
   }, []);
 
   const formatTime = (date: Date) => {
@@ -56,6 +71,11 @@ const HeroSection = () => {
           50%  { box-shadow: 0 0 8px rgba(99,102,241,0.12); transform: scale(1.02); }
           100% { box-shadow: 0 0 0 rgba(99,102,241,0); transform: scale(1); }
         }
+        
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
       `}</style>
       <section className="pt-32 pb-16 px-6">
         <div className="container mx-auto max-w-4xl">
@@ -78,10 +98,10 @@ const HeroSection = () => {
                 </span>
               </div>
               <p
-                className="font-mono text-muted-foreground opacity-0 animate-fade-in"
-                style={{ animationDelay: "0.15s" }}
+                className="font-mono text-muted-foreground"
               >
-                Software Engineer
+                {displayedText}
+                <span className="inline-block w-[2px] h-[1.1em] bg-primary ml-0.5 align-middle animate-[blink_1s_step-end_infinite]" />
               </p>
             </div>
           </div>

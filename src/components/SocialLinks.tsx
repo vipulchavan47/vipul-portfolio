@@ -14,7 +14,6 @@ const LeetCodeIcon = () => (
 
 const SocialLinks = () => {
   const actionButtons = [
-    { icon: FileText, label: "Resume", href: "#" },
     { icon: Mail, label: "Contact", href: "#contact" },
   ];
 
