@@ -5,16 +5,16 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Portfolio", href: "#projects" },
-    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "About", href: "#" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-mono text-muted-foreground hover:text-foreground transition-colors">
-          ~/your_name
+          ~/vipul_chavan
         </a>
 
         {/* Desktop Navigation */}
@@ -41,7 +41,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-card border-b border-border">
+        <nav className="md:hidden bg-card">
           <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
