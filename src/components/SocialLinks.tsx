@@ -14,8 +14,8 @@ const LeetCodeIcon = () => (
 
 const SocialLinks = () => {
   const actionButtons = [
-    { icon: FileText, label: "Resume", href: "#" },
-    { icon: Mail, label: "Contact", href: "#contact" },
+    { icon: FileText, label: "Resume", href: "/Resume_Port.pdf", download: true },
+    { icon: Mail, label: "Contact", href: "#contact", download: false },
   ];
 
   const socialLinks = [
@@ -33,7 +33,7 @@ const SocialLinks = () => {
           className="gap-2 font-mono text-xs"
           asChild
         >
-          <a href={button.href}>
+          <a href={button.href} download={button.download ? true : undefined}>
             <button.icon className="w-4 h-4" />
             {button.label}
           </a>
