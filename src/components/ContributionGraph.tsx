@@ -64,6 +64,9 @@ const ContributionGraph = () => {
   return (
     <section className="py-12 px-6">
       <div className="container mx-auto max-w-4xl">
+        <h3 className="text-lg font-mono text-muted-foreground mb-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          // LeetCode Progress
+        </h3>
         <div className="bg-card border border-border rounded-xl p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s" }}>
           {/* Month labels */}
           <div className="flex justify-between mb-2 px-1">

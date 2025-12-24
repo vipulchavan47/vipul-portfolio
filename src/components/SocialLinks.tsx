@@ -1,4 +1,4 @@
-import { FileText, Mail, Github } from "lucide-react";
+import { FileText, Mail, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TerminalDialog from "./TerminalDialog";
 
@@ -65,6 +65,16 @@ const SocialLinks = () => {
         aria-label="LeetCode"
       >
         <LeetCodeIcon />
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/vipulchavan47/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-2 rounded-lg border border-border bg-card hover:bg-secondary transition-colors"
+        aria-label="LinkedIn"
+      >
+        <Linkedin className="w-4 h-4 text-muted-foreground" />
       </a>
     </div>
   );

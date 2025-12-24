@@ -10,43 +10,43 @@
 
 @layer base {
   :root {
-    --background: 220 25% 4%;
+    --background: 220 30% 3%;
     --foreground: 210 20% 98%;
 
-    --card: 220 22% 7%;
+    --card: 220 25% 5%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 220 22% 7%;
+    --popover: 220 25% 5%;
     --popover-foreground: 210 20% 98%;
 
     --primary: 160 84% 39%;
     --primary-foreground: 220 25% 4%;
 
-    --secondary: 220 20% 12%;
+    --secondary: 220 22% 8%;
     --secondary-foreground: 210 20% 98%;
 
-    --muted: 220 18% 14%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 220 20% 10%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 220 20% 12%;
+    --accent: 220 22% 8%;
     --accent-foreground: 210 20% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 18% 12%;
-    --input: 220 18% 12%;
+    --border: 220 20% 10%;
+    --input: 220 20% 10%;
     --ring: 160 84% 39%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 18% 8%;
+    --sidebar-background: 220 20% 6%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 160 84% 39%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 14%;
+    --sidebar-accent: 220 16% 10%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 220 14% 18%;
+    --sidebar-border: 220 16% 14%;
     --sidebar-ring: 160 84% 39%;
 
     /* Custom portfolio tokens */
@@ -55,33 +55,36 @@
     --badge-nextjs: 0 0% 100%;
     --badge-tailwind: 189 100% 43%;
     
-    --contribution-empty: 220 14% 12%;
-    --contribution-level1: 160 60% 20%;
-    --contribution-level2: 160 70% 30%;
-    --contribution-level3: 160 80% 40%;
-    --contribution-level4: 160 84% 50%;
+    --contribution-empty: 220 20% 8%;
+    --contribution-level1: 160 60% 18%;
+    --contribution-level2: 160 70% 28%;
+    --contribution-level3: 160 80% 38%;
+    --contribution-level4: 160 84% 48%;
+    
+    --grid-line: 220 20% 8%;
   }
 
   .dark {
-    --background: 220 25% 4%;
+    --background: 220 30% 3%;
     --foreground: 210 20% 98%;
-    --card: 220 22% 7%;
+    --card: 220 25% 5%;
     --card-foreground: 210 20% 98%;
-    --popover: 220 22% 7%;
+    --popover: 220 25% 5%;
     --popover-foreground: 210 20% 98%;
     --primary: 160 84% 39%;
     --primary-foreground: 220 25% 4%;
-    --secondary: 220 20% 12%;
+    --secondary: 220 22% 8%;
     --secondary-foreground: 210 20% 98%;
-    --muted: 220 18% 14%;
-    --muted-foreground: 215 15% 50%;
-    --accent: 220 20% 12%;
+    --muted: 220 20% 10%;
+    --muted-foreground: 215 15% 45%;
+    --accent: 220 22% 8%;
     --accent-foreground: 210 20% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 18% 12%;
-    --input: 220 18% 12%;
+    --border: 220 20% 10%;
+    --input: 220 20% 10%;
     --ring: 160 84% 39%;
+    --grid-line: 220 20% 8%;
   }
 }
 
