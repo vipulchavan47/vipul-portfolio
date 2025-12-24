@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import ContributionGraph from "@/components/ContributionGraph";
+import TechStack from "@/components/TechStack";
+import ProjectsSection from "@/components/ProjectsSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <HeroSection />
+        <ContributionGraph />
+        <TechStack />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      <footer className="py-8 px-6 border-t border-border">
+        <div className="container mx-auto max-w-4xl">
+          <p className="text-center text-sm text-muted-foreground font-mono">
+            © 2024 Your Name. Built with React & Tailwind.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
