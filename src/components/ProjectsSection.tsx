@@ -1,28 +1,22 @@
-import { Github, Globe } from "lucide-react";
-import project1 from "@/assets/project-1.png";
-import project2 from "@/assets/project-2.png";
+import { Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Analytics Dashboard",
+    title: "Expense Tracker Application",
     description:
-      "A comprehensive analytics platform with real-time data visualization, custom reports, and team collaboration features.",
-    image: project1,
-    techStack: ["React", "TypeScript", "Tailwind", "PostgreSQL"],
+      "A desktop-based application to record, categorize, and manage daily expenses with persistent database storage. Implemented CRUD operations, expense filtering, and summary reports to analyze user spending patterns.",
+    techStack: ["Java", "MySQL", "JDBC", "JavaFX"],
     links: {
-      github: "https://github.com",
-      live: "https://example.com",
+      github: "https://github.com/vipulchavan47/expense-tracker",
     },
   },
   {
-    title: "AI Chat Interface",
+    title: "Employee Management Application",
     description:
-      "An AI-powered chat application with multiple model support, conversation history, and intelligent responses.",
-    image: project2,
-    techStack: ["Next.js", "OpenAI", "Supabase", "Tailwind"],
+      "A Java-based system to manage employee records with complete CRUD functionality and database integration. Centralized employee data to improve data accuracy and reduce manual record handling.",
+    techStack: ["Java", "MySQL", "Swing"],
     links: {
-      github: "https://github.com",
-      live: "https://example.com",
+      github: "https://github.com/vipulchavan47/employee-management",
     },
   },
 ];
@@ -45,15 +39,6 @@ const ProjectsSection = () => {
               className="group bg-card border border-border rounded-xl overflow-hidden card-hover opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.75 + index * 0.1}s` }}
             >
-              {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-              </div>
 
               {/* Project Info */}
               <div className="p-5">
@@ -71,17 +56,6 @@ const ProjectsSection = () => {
                         aria-label="View on GitHub"
                       >
                         <Github className="w-4 h-4 text-muted-foreground" />
-                      </a>
-                    )}
-                    {project.links.live && (
-                      <a
-                        href={project.links.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 rounded-md hover:bg-secondary transition-colors"
-                        aria-label="View live site"
-                      >
-                        <Globe className="w-4 h-4 text-muted-foreground" />
                       </a>
                     )}
                   </div>
