@@ -1,16 +1,35 @@
-import { Code, MapPin, Mail, Globe, Clock, User } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Code, MapPin, Mail, Clock, User } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 import TechBadge from "./TechBadge";
 import SocialLinks from "./SocialLinks";
+import TerminalVibe from "./TerminalVibe";
 
 const HeroSection = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-IN', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'Asia/Kolkata'
+    });
+  };
+
   const infoItems = [
-    { icon: Code, label: "Full-Stack Developer" },
-    { icon: MapPin, label: "San Francisco, CA" },
-    { icon: Mail, label: "hello@example.com" },
-    { icon: Clock, label: "10:30 AM", sublabel: "// same time" },
-    { icon: Globe, label: "yoursite.com" },
-    { icon: User, label: "they/them" },
+    { icon: Code, label: "Software Engineer" },
+    { icon: MapPin, label: "Navi Mumbai, India" },
+    { icon: Mail, label: "vipulchavan3301@gmail.com" },
+    { icon: Clock, label: formatTime(currentTime), sublabel: "// IST" },
+    { icon: User, label: "he/him" },
   ];
 
   return (
@@ -25,8 +44,8 @@ const HeroSection = () => {
           />
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
-                Your Name
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
+                Vipul Chavan
               </h1>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
@@ -63,14 +82,20 @@ const HeroSection = () => {
           style={{ animationDelay: "0.3s" }}
         >
           <p className="font-mono text-muted-foreground leading-relaxed">
-            I build interactive web apps using{" "}
-            <TechBadge name="TypeScript" color="typescript" />,{" "}
-            <TechBadge name="React" color="react" />,{" "}
-            <TechBadge name="Next.js" color="nextjs" />, and{" "}
-            <TechBadge name="Tailwind CSS" color="tailwind" />.
-            With a focus on UI design. Enthusiastic about creating seamless user
-            experiences, driven by a keen eye for design.
+            I'm an Information Technology undergraduate (B.E. – IT, 2026) with a strong foundation in{" "}
+            <TechBadge name="Java" color="typescript" /> and{" "}
+            <TechBadge name="MySQL" color="react" />.
+            I enjoy building efficient software solutions, solving real-world problems through code, 
+            and strengthening my problem-solving skills through consistent DSA practice.
           </p>
+        </div>
+
+        {/* Terminal Vibe */}
+        <div 
+          className="mb-8 opacity-0 animate-fade-in"
+          style={{ animationDelay: "0.35s" }}
+        >
+          <TerminalVibe />
         </div>
 
         {/* Action Buttons & Social Links */}

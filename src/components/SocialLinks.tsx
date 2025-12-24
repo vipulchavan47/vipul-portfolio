@@ -1,4 +1,4 @@
-import { FileText, Mail, Github, Twitter, Terminal } from "lucide-react";
+import { FileText, Mail, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SocialLinks = () => {
@@ -8,10 +8,8 @@ const SocialLinks = () => {
   ];
 
   const socialLinks = [
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
-    { icon: Terminal, href: "#", label: "Terminal" },
+    { icon: Github, href: "https://github.com/vipulchavan47", label: "GitHub" },
+    { icon: Mail, href: "mailto:vipulchavan3301@gmail.com", label: "Email" },
   ];
 
   return (
