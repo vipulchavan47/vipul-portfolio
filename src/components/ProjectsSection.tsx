@@ -29,14 +29,14 @@ const ProjectsSection = () => {
           className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: "0.7s" }}
         >
-          Featured Projects
+          // Projects
         </h3>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <article
               key={project.title}
-              className="group bg-card border border-border rounded-xl overflow-hidden card-hover opacity-0 animate-fade-in"
+              className="group bg-card border border-border rounded-xl overflow-hidden opacity-0 animate-fade-in transition-all duration-300 hover:border-muted-foreground/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:-translate-y-1"
               style={{ animationDelay: `${0.75 + index * 0.1}s` }}
             >
 
