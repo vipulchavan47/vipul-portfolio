@@ -133,8 +133,8 @@ const HeroSection = () => {
           >
             <p className="font-mono text-muted-foreground leading-relaxed">
               I'm an Information Technology undergraduate (B.E. – IT, 2026) with a strong foundation in{" "}
-              <TechBadge name="Java" color="typescript" /> and{" "}
-              <TechBadge name="MySQL" color="react" />.
+              <TechBadge name="Java" color="java" /> and{" "}
+              <TechBadge name="MySQL" color="mysql" />.
               I enjoy building efficient software solutions, solving real-world problems through code, 
               and strengthening my problem-solving skills through consistent DSA practice.
             </p>

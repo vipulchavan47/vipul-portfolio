@@ -20,36 +20,41 @@ const commands: Record<string, string> = {
 ╠══════════════════════════════════════════════════════════════╣
 ║  Name: Vipul Chavan                                          ║
 ║  Role: Software Engineer                                     ║
+║  Education: B.E. in Information Technology (2026)            ║
+║  Location: Navi Mumbai, India                                ║
 ║                                                              ║
-║  I'm a passionate developer who loves building               ║
-║  elegant solutions to complex problems.                      ║
-║                                                              ║
-║  Currently focused on web development, creating              ║
-║  performant and user-friendly applications.                  ║
+║  I'm an IT undergraduate with a strong foundation in         ║
+║  Java and MySQL. I enjoy building efficient software         ║
+║  solutions, solving real-world problems through code,        ║
+║  and strengthening my problem-solving skills through         ║
+║  consistent DSA practice.                                    ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   skills: `╔══════════════════════════════════════════════════════════════╗
 ║                      TECHNICAL SKILLS                        ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Languages:    JavaScript, TypeScript, Python, Java          ║
-║  Frontend:     React, Next.js, Tailwind CSS, HTML/CSS        ║
-║  Backend:      Node.js, Express, REST APIs                   ║
-║  Database:     PostgreSQL, MongoDB, MySQL                    ║
-║  Tools:        Git, Docker, VS Code, Linux                   ║
-║  Cloud:        AWS, Vercel, Netlify                          ║
+║  Languages:    Java, Python, C, JavaScript                   ║
+║  Frontend:     HTML, CSS, JavaScript                         ║
+║  Backend:      Java, JDBC                                    ║
+║  Database:     MySQL                                         ║
+║  Tools:        Git, GitHub, VS Code, IntelliJ IDEA           ║
+║  OS:           Linux (Ubuntu)                                ║
+║  Frameworks:   JavaFX, Swing                                 ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   projects: `╔══════════════════════════════════════════════════════════════╗
 ║                        PROJECTS                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║  [01] E-Commerce Dashboard                                   ║
-║       → Full-stack dashboard with analytics                  ║
-║       → Tech: React, Node.js, PostgreSQL                     ║
+║  [01] Expense Tracker Application                            ║
+║       → Desktop app to record & manage daily expenses        ║
+║       → CRUD operations, filtering, summary reports          ║
+║       → Tech: Java, MySQL, JDBC, JavaFX                      ║
 ║                                                              ║
-║  [02] Real-time Chat App                                     ║
-║       → WebSocket-based messaging platform                   ║
-║       → Tech: React, Socket.io, MongoDB                      ║
+║  [02] Employee Management Application                        ║
+║       → Java-based system to manage employee records         ║
+║       → Complete CRUD functionality with database            ║
+║       → Tech: Java, MySQL, Swing                             ║
 ║                                                              ║
 ║  Type 'projects --open' to view on GitHub                    ║
 ╚══════════════════════════════════════════════════════════════╝`,
