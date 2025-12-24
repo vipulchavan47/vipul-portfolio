@@ -2,7 +2,6 @@
 # Project Overview
 
 A modern frontend web application built with a fast and scalable React setup.
-The project is **inspired by Siddharth Meena** and his personal website: [https://siddz.com/](https://siddz.com/)
 
 ---
 

@@ -48,7 +48,7 @@ const ContributionGraph = () => {
     return data;
   }, []);
 
-  const totalContributions = 156; // From LeetCode profile
+  const totalContributions = 130; // From LeetCode profile
 
   const getLevelClass = (level: number) => {
     const classes = [
