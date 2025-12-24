@@ -7,7 +7,18 @@ import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Subtle grid background */}
+      <div 
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, hsl(220 20% 8% / 0.5) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(220 20% 8% / 0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }}
+      />
       <Header />
       <main>
         <HeroSection />
