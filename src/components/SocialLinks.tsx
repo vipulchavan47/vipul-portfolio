@@ -14,8 +14,8 @@ const LeetCodeIcon = () => (
 
 const SocialLinks = () => {
   const actionButtons = [
-    { icon: FileText, label: "Resume", href: "/resume.pdf", download: true },
-    { icon: Mail, label: "Contact", href: "#contact", download: false },
+    { icon: FileText, label: "Resume", href: "https://drive.google.com/file/d/1LnX5uRtZVHHR6CiqwPWW2FkFEqYprZKP/view?usp=sharing", external: true },
+    { icon: Mail, label: "Contact", href: "#contact", external: false },
   ];
 
   const socialLinks = [
@@ -33,7 +33,11 @@ const SocialLinks = () => {
           className="gap-2 font-mono text-xs"
           asChild
         >
-          <a href={button.href} download={button.download ? true : undefined}>
+          <a 
+            href={button.href} 
+            target={button.external ? "_blank" : undefined}
+            rel={button.external ? "noopener noreferrer" : undefined}
+          >
             <button.icon className="w-4 h-4" />
             {button.label}
           </a>
