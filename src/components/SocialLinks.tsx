@@ -1,7 +1,7 @@
 import { FileText, Mail, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TerminalDialog from "./TerminalDialog";
-
+import PortalNavigator from "./PortalNavigator";
 const LeetCodeIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -80,6 +80,8 @@ const SocialLinks = () => {
       >
         <Linkedin className="w-4 h-4 text-foreground" />
       </a>
+      
+      <PortalNavigator />
     </div>
   );
 };
