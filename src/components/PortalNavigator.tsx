@@ -100,6 +100,134 @@ const sectionContent: Record<string, React.ReactNode> = {
   ),
 };
 
+// Rick and Morty Portal Component
+const RickPortal = () => (
+  <div className="absolute inset-0 z-20 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+    <div className="relative w-48 h-48">
+      {/* Outer glow pulse */}
+      <div className="absolute inset-0 rounded-full bg-[#39FF14]/30 blur-3xl animate-pulse" />
+      
+      {/* Electric sparks around portal */}
+      <div className="absolute -inset-4">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-6 bg-gradient-to-t from-transparent via-[#39FF14] to-transparent opacity-80"
+            style={{
+              left: '50%',
+              top: '50%',
+              transform: `rotate(${i * 45}deg) translateY(-100px)`,
+              animation: `pulse 0.3s ease-in-out ${i * 0.1}s infinite alternate`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main portal - outer ring with glow */}
+      <div 
+        className="absolute inset-0 rounded-full"
+        style={{
+          background: 'conic-gradient(from 0deg, #39FF14, #00ff88, #39FF14, #00ff88, #39FF14)',
+          animation: 'spin 1s linear infinite',
+          boxShadow: '0 0 60px #39FF14, 0 0 100px #39FF14, inset 0 0 60px #39FF14',
+        }}
+      />
+      
+      {/* Second swirl layer */}
+      <div 
+        className="absolute inset-3 rounded-full"
+        style={{
+          background: 'conic-gradient(from 180deg, #00ff88, #39FF14, #00ff88, #39FF14, #00ff88)',
+          animation: 'spin 0.8s linear infinite reverse',
+          boxShadow: 'inset 0 0 40px rgba(0,255,136,0.8)',
+        }}
+      />
+      
+      {/* Third swirl layer - creates depth */}
+      <div 
+        className="absolute inset-6 rounded-full"
+        style={{
+          background: 'conic-gradient(from 90deg, #39FF14, #7fff7f, #39FF14, #00ff88, #39FF14)',
+          animation: 'spin 0.6s linear infinite',
+          boxShadow: 'inset 0 0 30px rgba(57,255,20,0.9)',
+        }}
+      />
+      
+      {/* Inner swirl - fastest */}
+      <div 
+        className="absolute inset-10 rounded-full"
+        style={{
+          background: 'conic-gradient(from 270deg, #7fff7f, #39FF14, #bfffbf, #39FF14, #7fff7f)',
+          animation: 'spin 0.4s linear infinite reverse',
+        }}
+      />
+      
+      {/* Bright center vortex */}
+      <div 
+        className="absolute inset-14 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, #ffffff 0%, #bfffbf 30%, #7fff7f 60%, #39FF14 100%)',
+          animation: 'pulse 0.2s ease-in-out infinite alternate',
+          boxShadow: '0 0 30px #fff, 0 0 60px #39FF14',
+        }}
+      />
+      
+      {/* Center white core */}
+      <div 
+        className="absolute inset-[72px] rounded-full bg-white"
+        style={{
+          boxShadow: '0 0 20px #fff, 0 0 40px #39FF14',
+          animation: 'pulse 0.15s ease-in-out infinite alternate',
+        }}
+      />
+      
+      {/* Spiral lines overlay */}
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" style={{ animation: 'spin 2s linear infinite' }}>
+        <defs>
+          <linearGradient id="spiralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#39FF14" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#00ff88" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#39FF14" stopOpacity="0.8" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M50,10 Q70,30 50,50 Q30,70 50,90"
+          fill="none"
+          stroke="url(#spiralGrad)"
+          strokeWidth="2"
+          opacity="0.6"
+        />
+        <path
+          d="M10,50 Q30,30 50,50 Q70,70 90,50"
+          fill="none"
+          stroke="url(#spiralGrad)"
+          strokeWidth="2"
+          opacity="0.6"
+        />
+      </svg>
+
+      {/* Floating particles */}
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute w-2 h-2 rounded-full bg-[#39FF14]"
+          style={{
+            left: `${20 + Math.random() * 60}%`,
+            top: `${20 + Math.random() * 60}%`,
+            animation: `ping ${0.5 + Math.random() * 0.5}s ease-in-out ${i * 0.1}s infinite`,
+            boxShadow: '0 0 10px #39FF14',
+          }}
+        />
+      ))}
+    </div>
+    
+    {/* Portal opening text */}
+    <p className="absolute bottom-4 text-[#39FF14] font-mono text-xs animate-pulse">
+      Opening interdimensional portal...
+    </p>
+  </div>
+);
+
 const PortalNavigator = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -110,7 +238,7 @@ const PortalNavigator = () => {
     setTimeout(() => {
       setActiveSection(id);
       setIsTransitioning(false);
-    }, 500);
+    }, 1200);
   };
 
   const handleBack = () => {
@@ -118,7 +246,7 @@ const PortalNavigator = () => {
     setTimeout(() => {
       setActiveSection(null);
       setIsTransitioning(false);
-    }, 500);
+    }, 1200);
   };
 
   const handleClose = () => {
@@ -153,22 +281,8 @@ const PortalNavigator = () => {
         </DialogHeader>
         
         <div className="relative min-h-[300px]">
-          {/* Portal Transition Effect */}
-          {isTransitioning && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="relative">
-                {/* Outer glow */}
-                <div className="absolute inset-0 w-40 h-40 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 rounded-full bg-[#39FF14]/20 blur-3xl animate-pulse" />
-                {/* Portal rings */}
-                <div className="w-32 h-32 rounded-full border-4 border-[#39FF14] animate-spin shadow-[0_0_30px_#39FF14,inset_0_0_30px_#39FF14]" />
-                <div className="absolute inset-2 rounded-full border-2 border-[#00ff88] animate-spin" style={{ animationDirection: 'reverse', animationDuration: '0.5s' }} />
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#39FF14] to-[#00ff88] opacity-80 animate-pulse" />
-                <div className="absolute inset-6 rounded-full bg-[#39FF14] opacity-60" />
-                {/* Center swirl */}
-                <div className="absolute inset-8 rounded-full bg-gradient-radial from-white/50 to-transparent" />
-              </div>
-            </div>
-          )}
+          {/* Rick and Morty Portal Transition */}
+          {isTransitioning && <RickPortal />}
 
           {/* Main Menu */}
           {!activeSection && !isTransitioning && (
