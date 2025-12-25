@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { User, Code, FolderOpen, Mail } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,18 +9,25 @@ import {
 } from "@/components/ui/dialog";
 
 const PortalGunIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <ellipse cx="12" cy="12" rx="8" ry="8" fill="#39FF14" opacity="0.3" />
-    <ellipse cx="12" cy="12" rx="5" ry="5" fill="#39FF14" opacity="0.6" />
-    <ellipse cx="12" cy="12" rx="2" ry="2" fill="#39FF14" />
+  <svg viewBox="0 0 24 24" className="w-4 h-4" style={{ filter: "drop-shadow(0 0 4px #39FF14)" }}>
+    <defs>
+      <radialGradient id="portalGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#39FF14" />
+        <stop offset="50%" stopColor="#00ff88" />
+        <stop offset="100%" stopColor="#39FF14" stopOpacity="0.3" />
+      </radialGradient>
+    </defs>
+    <ellipse cx="12" cy="12" rx="8" ry="8" fill="url(#portalGlow)" opacity="0.4" />
+    <ellipse cx="12" cy="12" rx="5" ry="5" fill="#39FF14" opacity="0.7" />
+    <ellipse cx="12" cy="12" rx="2.5" ry="2.5" fill="#fff" opacity="0.9" />
   </svg>
 );
 
 const sections = [
-  { id: "about", label: "About", description: "Who is this guy?" },
-  { id: "skills", label: "Skills", description: "Tech stack & abilities" },
-  { id: "projects", label: "Projects", description: "Cool stuff built" },
-  { id: "contact", label: "Contact", description: "Get in touch" },
+  { id: "about", label: "About", description: "Who is this guy?", icon: User },
+  { id: "skills", label: "Skills", description: "Tech stack & abilities", icon: Code },
+  { id: "projects", label: "Projects", description: "Cool stuff built", icon: FolderOpen },
+  { id: "contact", label: "Contact", description: "Get in touch", icon: Mail },
 ];
 
 const sectionContent: Record<string, React.ReactNode> = {
@@ -176,25 +184,30 @@ const PortalNavigator = () => {
 
               {/* Portal Options */}
               <div className="grid grid-cols-2 gap-3">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => handleNavigate(section.id)}
-                    className="relative p-4 rounded-xl border border-border hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 transition-all duration-300 text-left group"
-                  >
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-2 mb-1">
-                        <div className="w-3 h-3 rounded-full bg-muted-foreground/30 group-hover:bg-[#39FF14] group-hover:shadow-[0_0_10px_#39FF14] transition-all duration-300" />
-                        <span className="font-mono text-sm font-medium text-foreground">
-                          {section.label}
-                        </span>
-                      </div>
-                      <p className="text-xs text-muted-foreground pl-5">
-                        {section.description}
+                {sections.map((section) => {
+                  const IconComponent = section.icon;
+                  return (
+                    <button
+                      key={section.id}
+                      onClick={() => handleNavigate(section.id)}
+                      className="relative p-4 rounded-xl border border-border hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 transition-all duration-300 text-left group hover:shadow-[0_0_15px_rgba(57,255,20,0.15)]"
+                    >
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="w-6 h-6 rounded-full bg-muted-foreground/10 group-hover:bg-[#39FF14]/20 flex items-center justify-center transition-all duration-300">
+                            <IconComponent className="w-3.5 h-3.5 text-muted-foreground group-hover:text-[#39FF14] transition-colors duration-300" style={{ filter: "drop-shadow(0 0 3px currentColor)" }} />
+                          </div>
+                          <span className="font-mono text-sm font-medium text-foreground">
+                            {section.label}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground pl-8">
+                          {section.description}
                       </p>
-                    </div>
-                  </button>
-                ))}
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
 
               <p className="text-center text-xs text-muted-foreground mt-4 font-mono">
