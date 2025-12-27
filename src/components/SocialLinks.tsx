@@ -14,7 +14,7 @@ const LeetCodeIcon = () => (
 
 const SocialLinks = () => {
   const actionButtons = [
-    { icon: FileText, label: "Resume", href: "https://drive.google.com/file/d/1LnX5uRtZVHHR6CiqwPWW2FkFEqYprZKP/view?usp=sharing", external: true },
+    { icon: FileText, label: "Resume", href: "https://drive.google.com/file/d/1jHp0wqUDlfRUSW9Ivf2MFSN_wZdQb3bf/view?usp=drive_link", external: true },
     { icon: Mail, label: "Contact", href: "#contact", external: false },
   ];
 
