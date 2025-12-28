@@ -17,10 +17,10 @@ const LeetCodeStats = () => {
   const radius = 70;
   const circumference = 2 * Math.PI * radius;
   
-  // Calculate stroke offsets for stacked arcs
-  const easyStroke = (easyPercent / 100) * circumference * 0.75;
-  const mediumStroke = (mediumPercent / 100) * circumference * 0.75;
-  const hardStroke = (hardPercent / 100) * circumference * 0.75;
+  // Calculate stroke lengths for full circle
+  const easyStroke = (easyPercent / 100) * circumference;
+  const mediumStroke = (mediumPercent / 100) * circumference;
+  const hardStroke = (hardPercent / 100) * circumference;
 
   return (
     <section className="py-12 px-6">
@@ -42,37 +42,9 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="hsl(var(--muted))"
                   strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeDasharray={`${circumference * 0.75} ${circumference}`}
                   opacity="0.3"
                 />
-                {/* Hard (red) - bottom layer */}
-                <circle
-                  cx="80"
-                  cy="80"
-                  r={radius}
-                  fill="none"
-                  stroke="#f43f5e"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeDasharray={`${hardStroke} ${circumference}`}
-                  strokeDashoffset={-(easyStroke + mediumStroke)}
-                  className="transition-all duration-1000"
-                />
-                {/* Medium (amber) - middle layer */}
-                <circle
-                  cx="80"
-                  cy="80"
-                  r={radius}
-                  fill="none"
-                  stroke="#f59e0b"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeDasharray={`${mediumStroke} ${circumference}`}
-                  strokeDashoffset={-easyStroke}
-                  className="transition-all duration-1000"
-                />
-                {/* Easy (emerald) - top layer */}
+                {/* Easy (emerald) - starts at 0 */}
                 <circle
                   cx="80"
                   cy="80"
@@ -80,8 +52,32 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="#10b981"
                   strokeWidth="8"
-                  strokeLinecap="round"
                   strokeDasharray={`${easyStroke} ${circumference}`}
+                  strokeDashoffset="0"
+                  className="transition-all duration-1000"
+                />
+                {/* Medium (amber) - starts after easy */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r={radius}
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="8"
+                  strokeDasharray={`${mediumStroke} ${circumference}`}
+                  strokeDashoffset={-easyStroke}
+                  className="transition-all duration-1000"
+                />
+                {/* Hard (red) - starts after easy + medium */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r={radius}
+                  fill="none"
+                  stroke="#f43f5e"
+                  strokeWidth="8"
+                  strokeDasharray={`${hardStroke} ${circumference}`}
+                  strokeDashoffset={-(easyStroke + mediumStroke)}
                   className="transition-all duration-1000"
                 />
               </svg>
