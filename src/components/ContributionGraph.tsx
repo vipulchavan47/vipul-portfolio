@@ -1,8 +1,11 @@
+import { useState } from 'react';
+
 const LeetCodeStats = () => {
+  const [hoveredDifficulty, setHoveredDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
+
   const stats = {
     solved: 136,
     total: 3791,
-    attempting: 3,
     easy: { solved: 84, total: 918 },
     medium: { solved: 50, total: 1977 },
     hard: { solved: 2, total: 896 },
@@ -51,10 +54,12 @@ const LeetCodeStats = () => {
                   r={radius}
                   fill="none"
                   stroke="#10b981"
-                  strokeWidth="8"
+                  strokeWidth={hoveredDifficulty === 'easy' ? 12 : 8}
                   strokeDasharray={`${easyStroke} ${circumference}`}
                   strokeDashoffset="0"
-                  className="transition-all duration-1000"
+                  className="transition-all duration-300 cursor-pointer"
+                  onMouseEnter={() => setHoveredDifficulty('easy')}
+                  onMouseLeave={() => setHoveredDifficulty(null)}
                 />
                 {/* Medium (amber) - starts after easy */}
                 <circle
@@ -63,10 +68,12 @@ const LeetCodeStats = () => {
                   r={radius}
                   fill="none"
                   stroke="#f59e0b"
-                  strokeWidth="8"
+                  strokeWidth={hoveredDifficulty === 'medium' ? 12 : 8}
                   strokeDasharray={`${mediumStroke} ${circumference}`}
                   strokeDashoffset={-easyStroke}
-                  className="transition-all duration-1000"
+                  className="transition-all duration-300 cursor-pointer"
+                  onMouseEnter={() => setHoveredDifficulty('medium')}
+                  onMouseLeave={() => setHoveredDifficulty(null)}
                 />
                 {/* Hard (red) - starts after easy + medium */}
                 <circle
@@ -75,10 +82,12 @@ const LeetCodeStats = () => {
                   r={radius}
                   fill="none"
                   stroke="#f43f5e"
-                  strokeWidth="8"
+                  strokeWidth={hoveredDifficulty === 'hard' ? 12 : 8}
                   strokeDasharray={`${hardStroke} ${circumference}`}
                   strokeDashoffset={-(easyStroke + mediumStroke)}
-                  className="transition-all duration-1000"
+                  className="transition-all duration-300 cursor-pointer"
+                  onMouseEnter={() => setHoveredDifficulty('hard')}
+                  onMouseLeave={() => setHoveredDifficulty(null)}
                 />
               </svg>
               
@@ -91,17 +100,19 @@ const LeetCodeStats = () => {
                   <span className="text-xs">✓</span>
                   <span>Solved</span>
                 </div>
-                <div className="flex items-center gap-1 text-amber-400 text-xs mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                  <span>{stats.attempting} Attempting</span>
-                </div>
               </div>
             </div>
 
             {/* Right: Difficulty Cards */}
             <div className="flex flex-col gap-3">
               {/* Easy */}
-              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-6 py-3 min-w-[120px]">
+              <div 
+                className={`bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
+                  hoveredDifficulty === 'easy' ? 'shadow-[0_0_20px_rgba(16,185,129,0.5)] border-emerald-400 scale-105' : ''
+                }`}
+                onMouseEnter={() => setHoveredDifficulty('easy')}
+                onMouseLeave={() => setHoveredDifficulty(null)}
+              >
                 <div className="text-emerald-400 font-semibold text-sm">Easy</div>
                 <div className="text-foreground font-mono">
                   <span className="font-bold">{stats.easy.solved}</span>
@@ -110,7 +121,13 @@ const LeetCodeStats = () => {
               </div>
               
               {/* Medium */}
-              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg px-6 py-3 min-w-[120px]">
+              <div 
+                className={`bg-amber-500/10 border border-amber-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
+                  hoveredDifficulty === 'medium' ? 'shadow-[0_0_20px_rgba(245,158,11,0.5)] border-amber-400 scale-105' : ''
+                }`}
+                onMouseEnter={() => setHoveredDifficulty('medium')}
+                onMouseLeave={() => setHoveredDifficulty(null)}
+              >
                 <div className="text-amber-400 font-semibold text-sm">Med.</div>
                 <div className="text-foreground font-mono">
                   <span className="font-bold">{stats.medium.solved}</span>
@@ -119,7 +136,13 @@ const LeetCodeStats = () => {
               </div>
               
               {/* Hard */}
-              <div className="bg-rose-500/10 border border-rose-500/30 rounded-lg px-6 py-3 min-w-[120px]">
+              <div 
+                className={`bg-rose-500/10 border border-rose-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
+                  hoveredDifficulty === 'hard' ? 'shadow-[0_0_20px_rgba(244,63,94,0.5)] border-rose-400 scale-105' : ''
+                }`}
+                onMouseEnter={() => setHoveredDifficulty('hard')}
+                onMouseLeave={() => setHoveredDifficulty(null)}
+              >
                 <div className="text-rose-400 font-semibold text-sm">Hard</div>
                 <div className="text-foreground font-mono">
                   <span className="font-bold">{stats.hard.solved}</span>
