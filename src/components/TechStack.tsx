@@ -112,7 +112,7 @@ const TechStack = () => {
           {techStack.map((tech, index) => (
             <div
               key={tech.name}
-              className="group relative flex items-center justify-center w-12 h-12 rounded-xl bg-card border border-border hover:border-primary/30 transition-all cursor-default"
+              className="group relative flex flex-col items-center justify-center gap-2 px-3 py-2 rounded-xl bg-card border border-border hover:border-primary/30 transition-all cursor-default"
               style={{ animationDelay: `${0.65 + index * 0.03}s` }}
             >
               <div style={{ color: tech.color }}>
@@ -124,7 +124,7 @@ const TechStack = () => {
                   <div className="w-5 h-5 rounded" style={{ backgroundColor: tech.color }} />
                 )}
               </div>
-              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">
                 {tech.name}
               </span>
             </div>
