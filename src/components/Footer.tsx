@@ -9,17 +9,6 @@ const Footer = () => {
           >
             ~/vipul_chavan
           </a>
-          <p className="font-mono text-xs text-muted-foreground/60">
-            Design inspired by{" "}
-            <a 
-              href="https://siddz.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]"
-            >
-              siddz.com
-            </a>
-          </p>
         </div>
       </div>
     </footer>

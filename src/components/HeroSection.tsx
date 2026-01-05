@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Code, MapPin, Mail, Clock, User, Monitor } from "lucide-react";
-import avatar from "@/assets/avatar3.png";
 import TechBadge from "./TechBadge";
 import SocialLinks from "./SocialLinks";
 
@@ -43,7 +42,7 @@ const HeroSection = () => {
     { icon: MapPin, label: "Navi Mumbai, India" },
     { icon: Mail, label: "vipulchavan3301@gmail.com" },
     { icon: Clock, label: formatTime(currentTime), sublabel: "// IST" },
-    { icon: Monitor, label: "Ubuntu" },
+    { icon: Monitor, label: "Fedora" },
     { icon: User, label: "he/him" },
   ];
 
@@ -81,12 +80,6 @@ const HeroSection = () => {
         <div className="container mx-auto max-w-4xl">
           {/* Profile Header */}
           <div className="flex flex-col sm:flex-row items-start gap-6 mb-8 animate-fade-in">
-            {/* Note: inline style.animationDelay already used on child elements */}
-            <img
-              src={avatar}
-              alt="Profile"
-              className="w-20 h-20 rounded-2xl object-cover ring-2 ring-border"
-            />
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-3">
               <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
