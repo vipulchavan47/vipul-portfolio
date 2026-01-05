@@ -82,7 +82,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-start gap-6 mb-8 animate-fade-in">
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground font-mono">
                   Vipul Chavan
                 </h1>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
