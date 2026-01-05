@@ -16,14 +16,17 @@ const LeetCodeStats = () => {
   const mediumPercent = (stats.medium.solved / stats.solved) * 100;
   const hardPercent = (stats.hard.solved / stats.solved) * 100;
 
-  // SVG circle calculations
+  // SVG circle calculations - 270 degree arc (gap at bottom)
   const radius = 70;
-  const circumference = 2 * Math.PI * radius;
+  const fullCircumference = 2 * Math.PI * radius;
+  const arcPercentage = 0.75; // 270 degrees = 75% of circle
+  const arcLength = fullCircumference * arcPercentage;
+  const gapLength = fullCircumference * (1 - arcPercentage);
   
-  // Calculate stroke lengths for full circle
-  const easyStroke = (easyPercent / 100) * circumference;
-  const mediumStroke = (mediumPercent / 100) * circumference;
-  const hardStroke = (hardPercent / 100) * circumference;
+  // Calculate stroke lengths for the arc
+  const easyStroke = (easyPercent / 100) * arcLength;
+  const mediumStroke = (mediumPercent / 100) * arcLength;
+  const hardStroke = (hardPercent / 100) * arcLength;
 
   return (
     <section className="py-12 px-6">
@@ -36,8 +39,8 @@ const LeetCodeStats = () => {
           <div className="flex items-center justify-center gap-8 flex-wrap">
             {/* Left: Circular Progress */}
             <div className="relative w-48 h-48">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
-                {/* Background circle */}
+              <svg className="w-full h-full rotate-[135deg]" viewBox="0 0 160 160">
+                {/* Background arc */}
                 <circle
                   cx="80"
                   cy="80"
@@ -45,6 +48,8 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="hsl(var(--muted))"
                   strokeWidth="8"
+                  strokeDasharray={`${arcLength} ${gapLength}`}
+                  strokeLinecap="round"
                   opacity="0.3"
                 />
                 {/* Easy (emerald) - starts at 0 */}
@@ -55,8 +60,9 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="#10b981"
                   strokeWidth={hoveredDifficulty === 'easy' ? 12 : 8}
-                  strokeDasharray={`${easyStroke} ${circumference}`}
+                  strokeDasharray={`${easyStroke} ${fullCircumference}`}
                   strokeDashoffset="0"
+                  strokeLinecap="round"
                   className="transition-all duration-300 cursor-pointer"
                   onMouseEnter={() => setHoveredDifficulty('easy')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
@@ -69,8 +75,9 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="#f59e0b"
                   strokeWidth={hoveredDifficulty === 'medium' ? 12 : 8}
-                  strokeDasharray={`${mediumStroke} ${circumference}`}
+                  strokeDasharray={`${mediumStroke} ${fullCircumference}`}
                   strokeDashoffset={-easyStroke}
+                  strokeLinecap="round"
                   className="transition-all duration-300 cursor-pointer"
                   onMouseEnter={() => setHoveredDifficulty('medium')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
@@ -83,8 +90,9 @@ const LeetCodeStats = () => {
                   fill="none"
                   stroke="#f43f5e"
                   strokeWidth={hoveredDifficulty === 'hard' ? 12 : 8}
-                  strokeDasharray={`${hardStroke} ${circumference}`}
+                  strokeDasharray={`${hardStroke} ${fullCircumference}`}
                   strokeDashoffset={-(easyStroke + mediumStroke)}
+                  strokeLinecap="round"
                   className="transition-all duration-300 cursor-pointer"
                   onMouseEnter={() => setHoveredDifficulty('hard')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
