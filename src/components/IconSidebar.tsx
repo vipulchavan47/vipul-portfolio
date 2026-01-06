@@ -4,9 +4,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 const IconSidebar = () => {
   const navItems = [
     { icon: Home, label: "Home", href: "#" },
-    { icon: User, label: "About", href: "#about" },
     { icon: FolderOpen, label: "Projects", href: "#projects" },
-    { icon: Briefcase, label: "Experience", href: "#experience" },
     { icon: Send, label: "Contact", href: "#contact" },
   ];
 
