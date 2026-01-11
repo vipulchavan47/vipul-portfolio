@@ -6,14 +6,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const commands: Record<string, string> = {
+const neofetch = `
+       _____       vipul@portfolio
+   ___|_____|___   ----------------
+  |   ▀▀▀▀▀▀▀   |  OS: Fedora 41 (Workstation)
+  |  ███   ███  |  Host: portfolio.local
+  |  ███   ███  |  Kernel: 6.12.0-fc41
+  |  ▀▀▀▀▀▀▀▀▀  |  Shell: zsh 5.9
+  |_____________|  DE: GNOME 47
+       ╱   ╲        Terminal: gnome-terminal
+      ╱     ╲       CPU: Coffee @ 99%
+                    Memory: 8GB / ∞
+                    Uptime: since 2026
+                    Status: Building cool stuff ⚡
+`;
+
+const commands: Record<string, string | (() => string)> = {
   help: `Available commands:
-  about     - Learn about me
-  skills    - View my technical skills
-  projects  - See my projects
-  contact   - Get my contact info
-  clear     - Clear the terminal
-  help      - Show this help message`,
+  about      - Learn about me
+  skills     - View my technical skills
+  projects   - See my projects
+  contact    - Get my contact info
+  whoami     - Who am I?
+  ls         - List contents
+  neofetch   - System info (flex mode)
+  pwd        - Print working directory
+  cat        - Meow? 🐱
+  sudo       - Nice try...
+  rm -rf /   - Definitely not
+  clear      - Clear the terminal
+  help       - Show this help message
+  
+  Hint: Try 'ls skills' or 'ls projects'`,
   
   about: `╔══════════════════════════════════════════════════════════════╗
 ║                        ABOUT ME                              ║
@@ -38,7 +62,7 @@ const commands: Record<string, string> = {
 ║  Backend:      Java, JDBC                                    ║
 ║  Database:     MySQL                                         ║
 ║  Tools:        Git, GitHub, VS Code, IntelliJ IDEA           ║
-║  OS:           Linux (Ubuntu)                                ║
+║  OS:           Linux (Fedora 🎩)                             ║
 ║  Frameworks:   JavaFX, Swing                                 ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
@@ -69,10 +93,87 @@ const commands: Record<string, string> = {
 ║  LeetCode:  leetcode.com/u/vipulcx                           ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝`,
+
+  whoami: `vipul_chavan
+A software engineer who thinks debugging is just aggressive negotiating with the code.
+Currently running on caffeine and curiosity.
+Status: Compiling dreams... ⚙️`,
+
+  neofetch: neofetch,
+
+  pwd: `/home/vipul/portfolio`,
+
+  cat: `😺 Meow! Did you mean 'cat <filename>'?
+Available files: resume.pdf, motivation.txt, coffee_addiction.log
+
+Try: cat motivation.txt`,
+
+  "cat motivation.txt": `📄 motivation.txt
+-------------------
+"First, solve the problem. Then, write the code."
+                                    - John Johnson
+
+Current motivation level: ████████░░ 80%
+Coffee level: ██████████ 100%
+Bugs fixed today: 42 (nice)`,
+
+  "cat resume.pdf": `📄 Opening resume.pdf...
+Just kidding, this is a terminal! 
+Visit my LinkedIn or GitHub for the real deal. 😄`,
+
+  "cat coffee_addiction.log": `[INFO] 06:00 - First coffee of the day
+[INFO] 08:30 - Second coffee, debugging begins
+[WARN] 11:00 - Third coffee, still debugging
+[ERROR] 14:00 - Fourth coffee, considering career change
+[INFO] 16:00 - Bug found! Fifth coffee in celebration
+[DEBUG] 18:00 - It was a missing semicolon. Again.`,
+
+  ls: `drwxr-xr-x  projects/
+drwxr-xr-x  skills/
+-rw-r--r--  about.md
+-rw-r--r--  resume.pdf
+-rw-r--r--  motivation.txt
+-rw-r--r--  coffee_addiction.log`,
+
+  "ls skills": `📁 skills/
+├── languages/
+│   ├── java.rs        ⭐⭐⭐⭐⭐
+│   ├── python.py      ⭐⭐⭐⭐
+│   ├── javascript.js  ⭐⭐⭐
+│   └── c.c            ⭐⭐⭐
+├── databases/
+│   └── mysql.sql      ⭐⭐⭐⭐
+├── tools/
+│   ├── git            ⭐⭐⭐⭐
+│   ├── linux          ⭐⭐⭐⭐
+│   └── vscode         ⭐⭐⭐⭐⭐
+└── soft_skills/
+    ├── problem_solving ⭐⭐⭐⭐⭐
+    └── debugging       ⭐⭐⭐⭐ (it's a love-hate thing)`,
+
+  "ls projects": `📁 projects/
+├── expense-tracker/     [Java, MySQL, JavaFX]
+├── employee-manager/    [Java, MySQL, Swing]
+├── portfolio-website/   [React, TypeScript] ← you are here
+└── secret-project/      [Coming Soon™]`,
+
+  sudo: `[sudo] password for vipul: ********
+Nice try! But you don't have sudo privileges here. 🔒
+This incident will be reported... just kidding! 😄`,
+
+  "rm -rf /": `🚫 Permission denied.
+What did you think would happen? 😅
+System integrity: ████████████ 100% (still safe)`,
+
+  "sudo rm -rf /": `🚫 ABSOLUTELY NOT.
+I appreciate the creativity, but let's keep this portfolio intact! 🛡️`,
+
+  exit: `Goodbye! Thanks for visiting my terminal. 👋
+(The terminal stays open because I enjoy your company)`,
 };
 
 type HistoryLine = {
-  type: "command" | "output" | "system";
+  type: "command" | "output" | "system" | "fedora";
   content: string;
 };
 
@@ -82,6 +183,7 @@ const TerminalDialog = () => {
   const [history, setHistory] = useState<HistoryLine[]>([]);
   const [isBooting, setIsBooting] = useState(true);
   const [bootText, setBootText] = useState("");
+  const [easterEggTriggered, setEasterEggTriggered] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -99,15 +201,48 @@ const TerminalDialog = () => {
     });
   };
 
-  const bootSequence = `Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-91-generic x86_64)
+  const bootSequence = `Welcome to Fedora 41 (Workstation Edition)
+Kernel: Linux 6.12.0-fc41.x86_64
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
+ * Documentation:  https://docs.fedoraproject.org
+ * Community:      https://ask.fedoraproject.org
 
-Last login: ${getCurrentDate()} on tty1
-Type 'help' for available commands.
+Last login: ${getCurrentDate()} on pts/0
+Type 'help' for available commands. Try 'neofetch' for fun! 🎩
 `;
+
+  // Easter egg: Ctrl+Shift+H for hidden message
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'H') {
+        e.preventDefault();
+        if (isOpen && !isBooting) {
+          setEasterEggTriggered(true);
+          setHistory((prev) => [
+            ...prev,
+            { type: "fedora", content: `
+🎩 SECRET UNLOCKED! 🎩
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+You found the easter egg! (Ctrl+Shift+H)
+
+Fun facts about me:
+• I debug in my dreams (it's concerning)
+• My git commit messages are poetry
+• I believe tabs > spaces (fight me)
+• I've mass debugged 47 times (and counting)
+• My favorite HTTP status is 418 (I'm a teapot)
+
+Thanks for exploring! You're officially cool. 😎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━` },
+          ]);
+          setTimeout(() => setEasterEggTriggered(false), 3000);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, isBooting]);
 
   useEffect(() => {
     if (isOpen) {
@@ -126,7 +261,7 @@ Type 'help' for available commands.
           setIsBooting(false);
           inputRef.current?.focus();
         }
-      }, 10);
+      }, 8);
 
       return () => clearInterval(timer);
     }
@@ -143,7 +278,7 @@ Type 'help' for available commands.
 
     setHistory((prev) => [
       ...prev,
-      { type: "command", content: `vipul@portfolio:~$ ${cmd}` },
+      { type: "command", content: `vipul@fedora:~$ ${cmd}` },
     ]);
 
     if (trimmedCmd === "clear") {
@@ -155,15 +290,17 @@ Type 'help' for available commands.
       window.open("https://github.com/vipulchavan47", "_blank");
       setHistory((prev) => [
         ...prev,
-        { type: "output", content: "Opening GitHub..." },
+        { type: "output", content: "Opening GitHub... 🚀" },
       ]);
       return;
     }
 
-    if (commands[trimmedCmd]) {
+    const commandResult = commands[trimmedCmd];
+    if (commandResult) {
+      const output = typeof commandResult === 'function' ? commandResult() : commandResult;
       setHistory((prev) => [
         ...prev,
-        { type: "output", content: commands[trimmedCmd] },
+        { type: "output", content: output },
       ]);
     } else if (trimmedCmd === "") {
       // Do nothing for empty command
@@ -172,7 +309,8 @@ Type 'help' for available commands.
         ...prev,
         {
           type: "output",
-          content: `Command not found: ${cmd}. Type 'help' for available commands.`,
+          content: `bash: ${cmd}: command not found
+Type 'help' for available commands.`,
         },
       ]);
     }
@@ -201,20 +339,24 @@ Type 'help' for available commands.
           <Terminal className="w-4 h-4 text-foreground" />
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-2xl p-0 bg-[#0d1117] border-border overflow-hidden">
-        <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-border">
+      <DialogContent className="sm:max-w-2xl p-0 bg-[#0d0d0d] border-[#3c6eb4]/30 overflow-hidden">
+        {/* Fedora-styled header bar */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-[#1a1a1a] border-b border-[#3c6eb4]/20">
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 cursor-pointer" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 cursor-pointer" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 cursor-pointer" />
+            <div className="w-3 h-3 rounded-full bg-[#cc0000]/80 hover:bg-[#cc0000] cursor-pointer transition-colors" />
+            <div className="w-3 h-3 rounded-full bg-[#f4bf49]/80 hover:bg-[#f4bf49] cursor-pointer transition-colors" />
+            <div className="w-3 h-3 rounded-full bg-[#73d216]/80 hover:bg-[#73d216] cursor-pointer transition-colors" />
           </div>
-          <span className="flex-1 text-center text-sm text-muted-foreground font-mono">
-            {">"}_  vipul@portfolio:~
+          <span className="flex-1 text-center text-sm text-muted-foreground font-mono flex items-center justify-center gap-2">
+            <span className="text-[#3c6eb4]">●</span>
+            vipul@fedora:~
           </span>
         </div>
         <div
           ref={terminalRef}
-          className="p-4 font-mono text-sm min-h-[350px] max-h-[450px] overflow-auto cursor-text"
+          className={`p-4 font-mono text-sm min-h-[350px] max-h-[450px] overflow-auto cursor-text transition-all duration-300 ${
+            easterEggTriggered ? 'bg-[#3c6eb4]/5' : ''
+          }`}
           onClick={handleTerminalClick}
         >
           {/* Boot sequence */}
@@ -222,7 +364,15 @@ Type 'help' for available commands.
             {bootText.split("\n").map((line, i) => {
               if (line.includes("Last login:")) {
                 return (
-                  <span key={i} className="text-primary">
+                  <span key={i} className="text-[#3c6eb4]">
+                    {line}
+                    {"\n"}
+                  </span>
+                );
+              }
+              if (line.includes("Fedora")) {
+                return (
+                  <span key={i} className="text-[#3c6eb4] font-semibold">
                     {line}
                     {"\n"}
                   </span>
@@ -244,7 +394,9 @@ Type 'help' for available commands.
                 key={i}
                 className={`whitespace-pre-wrap leading-relaxed ${
                   line.type === "command"
-                    ? "text-green-400"
+                    ? "text-[#3c6eb4]"
+                    : line.type === "fedora"
+                    ? "text-[#51a2da]"
                     : "text-muted-foreground"
                 }`}
               >
@@ -255,23 +407,23 @@ Type 'help' for available commands.
           {/* Input line */}
           {!isBooting && (
             <div className="flex items-center">
-              <span className="text-green-400">vipul@portfolio:~$&nbsp;</span>
+              <span className="text-[#3c6eb4]">vipul@fedora:~$&nbsp;</span>
               <input
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-sm caret-green-400"
+                className="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-sm caret-[#3c6eb4]"
                 spellCheck={false}
                 autoComplete="off"
               />
-              <span className="animate-pulse text-green-400">█</span>
+              <span className="animate-pulse text-[#3c6eb4]">█</span>
             </div>
           )}
 
           {isBooting && (
-            <span className="animate-pulse text-green-400">█</span>
+            <span className="animate-pulse text-[#3c6eb4]">█</span>
           )}
         </div>
       </DialogContent>
