@@ -1,4 +1,4 @@
-import IconSidebar from "@/components/IconSidebar";
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ContributionGraph from "@/components/ContributionGraph";
 import TechStack from "@/components/TechStack";
@@ -20,7 +20,7 @@ const Index = () => {
           backgroundSize: '60px 60px'
         }}
       />
-      <IconSidebar />
+      <Header />
       <main>
         <HeroSection />
         <ContributionGraph />
