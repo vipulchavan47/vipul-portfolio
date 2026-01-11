@@ -4,11 +4,11 @@ const LeetCodeStats = () => {
   const [hoveredDifficulty, setHoveredDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
 
   const stats = {
-    solved: 145,
-    total: 3801,
-    easy: { solved: 91, total: 921 },
-    medium: { solved: 51, total: 1982 },
-    hard: { solved: 3, total: 898 },
+    solved: 153,
+    total: 3806,
+    easy: { solved: 96, total: 922 },
+    medium: { solved: 54, total: 1984 },
+    hard: { solved: 3, total: 900 },
   };
 
   // Calculate percentages for the circular progress
