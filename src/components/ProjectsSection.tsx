@@ -95,7 +95,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className={`text-sm text-muted-foreground mb-4 line-clamp-3 transition-colors duration-300 ${
+                <p className={`text-sm text-muted-foreground mb-4 transition-colors duration-300 ${
                   hoveredIndex === index ? 'text-foreground/80' : ''
                 }`}>
                   {project.description}
