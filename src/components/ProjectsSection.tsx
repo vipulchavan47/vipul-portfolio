@@ -12,12 +12,12 @@ const projects = [
     },
   },
   {
-    title: "Python Text-to-Speech",
+    title: "Task Management REST API",
     description:
-      "A Python-based Text-to-Speech application that converts text, images, and PDFs into speech using OCR and speech synthesis libraries. Designed with a simple interface and modular code, focusing on practical text processing and accessibility.",
-    techStack: ["Python", "OCR", "TTS", "PDF Processing"],
+      "A RESTful backend application with full CRUD operations using layered architecture. Implemented DTOs, JPA-based persistence, and tested endpoints using Postman.",
+    techStack: ["Java", "Spring Boot", "Spring Data JPA", "MySQL", "Postman"],
     links: {
-      github: "https://github.com/vipulchavan47/python-tts",
+      github: "https://github.com/vipulchavan47/task-manager-api",
     },
   },
 ];
