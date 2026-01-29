@@ -125,11 +125,11 @@ const HeroSection = () => {
             style={{ animationDelay: "0.3s" }}
           >
             <p className="font-mono text-muted-foreground leading-relaxed">
-              I'm an Information Technology undergraduate (B.E. – IT, 2026) with a strong foundation in{" "}
+              Information Technology undergraduate with a strong foundation in{" "}
               <TechBadge name="Java" color="java" /> and{" "}
-              <TechBadge name="MySQL" color="mysql" />.
-              I enjoy building efficient software solutions, solving real-world problems through code, 
-              and strengthening my problem-solving skills through consistent DSA practice.
+              <TechBadge name="MySQL" color="mysql" />. Hands-on experience
+              building <TechBadge name="REST APIs" color="spring" />, with a focus on clean code and layered design. 
+              Regularly practice data structures and algorithms to strengthen problem-solving skills.
             </p>
           </div>
 
