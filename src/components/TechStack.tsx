@@ -144,7 +144,7 @@ const TechStack = () => {
           Technical Skills
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={category.title}
