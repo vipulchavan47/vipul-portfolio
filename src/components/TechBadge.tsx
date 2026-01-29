@@ -1,6 +1,6 @@
 interface TechBadgeProps {
   name: string;
-  color: "java" | "mysql" | "typescript" | "react" | "nextjs" | "tailwind";
+  color: "java" | "mysql" | "typescript" | "react" | "nextjs" | "tailwind" | "spring";
 }
 
 const colorClasses = {
@@ -10,6 +10,7 @@ const colorClasses = {
   react: "bg-cyan-500/20 text-cyan-400 border-cyan-500/40 shadow-[0_0_8px_rgba(6,182,212,0.3)]",
   nextjs: "bg-foreground/10 text-foreground border-foreground/30 shadow-[0_0_8px_rgba(255,255,255,0.1)]",
   tailwind: "bg-teal-500/20 text-teal-400 border-teal-500/40 shadow-[0_0_8px_rgba(20,184,166,0.3)]",
+  spring: "bg-green-500/20 text-green-400 border-green-500/40 shadow-[0_0_8px_rgba(34,197,94,0.3)]",
 };
 
 const TechBadge = ({ name, color }: TechBadgeProps) => {
