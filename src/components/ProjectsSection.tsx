@@ -29,10 +29,10 @@ const ProjectsSection = () => {
     <section id="projects" className="py-16 px-6">
       <div className="container mx-auto max-w-4xl">
         <h3 
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-8 opacity-0 animate-fade-in"
+          className="text-lg md:text-xl font-semibold font-mono text-foreground mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: "0.7s" }}
         >
-          // Projects
+          Projects
         </h3>
 
         <div className="grid md:grid-cols-2 gap-6">
