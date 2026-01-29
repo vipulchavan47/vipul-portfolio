@@ -7,7 +7,7 @@ const ContactSection = () => {
     <section id="contact" className="py-16 px-6">
       <div className="container mx-auto max-w-2xl text-center">
         <h3 
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-8 opacity-0 animate-fade-in"
+          className="text-lg md:text-xl font-semibold font-mono text-foreground mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: "0.8s" }}
         >
           Let's Connect
