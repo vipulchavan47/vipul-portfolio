@@ -48,19 +48,9 @@ const skillCategories: SkillCategory[] = [
     title: "Framework",
     items: [
       { 
-        name: "Spring Boot", 
+        name: "Spring Boot (REST APIs, Data JPA)", 
         color: "#6DB33F",
         icon: Leaf
-      },
-      { 
-        name: "REST APIs", 
-        color: "#10B981",
-        icon: Layers
-      },
-      { 
-        name: "Data JPA", 
-        color: "#6DB33F",
-        icon: Database
       },
     ]
   },
