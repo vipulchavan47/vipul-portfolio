@@ -4,11 +4,12 @@ const LeetCodeStats = () => {
   const [hoveredDifficulty, setHoveredDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
 
   const stats = {
-    solved: 153,
-    total: 3806,
-    easy: { solved: 96, total: 922 },
-    medium: { solved: 54, total: 1984 },
-    hard: { solved: 3, total: 900 },
+    solved: 175,
+    total: 3822,
+    attempting: 3,
+    easy: { solved: 114, total: 922 },
+    medium: { solved: 58, total: 1997 },
+    hard: { solved: 3, total: 903 },
   };
 
   // Calculate percentages for the circular progress
@@ -28,8 +29,8 @@ const LeetCodeStats = () => {
   return (
     <section className="py-12 px-6">
       <div className="container mx-auto max-w-4xl">
-        <h3 className="text-lg font-mono text-muted-foreground mb-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-          // LeetCode Progress
+        <h3 className="text-lg md:text-xl font-semibold font-mono text-foreground mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          LeetCode Progress
         </h3>
         
         <div className="bg-card border border-border rounded-xl p-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s" }}>
@@ -99,6 +100,9 @@ const LeetCodeStats = () => {
                 <div className="flex items-center gap-1 text-emerald-400 text-sm mt-1">
                   <span className="text-xs">✓</span>
                   <span>Solved</span>
+                </div>
+                <div className="text-amber-400 text-xs mt-1">
+                  {stats.attempting} Attempting
                 </div>
               </div>
             </div>
