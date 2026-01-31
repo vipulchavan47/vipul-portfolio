@@ -101,9 +101,6 @@ const LeetCodeStats = () => {
                   <span className="text-xs">✓</span>
                   <span>Solved</span>
                 </div>
-                <div className="text-amber-400 text-xs mt-1">
-                  {stats.attempting} Attempting
-                </div>
               </div>
             </div>
 
