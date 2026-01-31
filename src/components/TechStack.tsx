@@ -127,7 +127,7 @@ const skillCategories: SkillCategory[] = [
     ]
   },
   {
-    title: "Operating Systems",
+    title: "Operating System",
     items: [
       { 
         name: "Linux", 

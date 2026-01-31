@@ -9,7 +9,7 @@ import {
 const neofetch = `
        _____       vipul@portfolio
    ___|_____|___   ----------------
-  |   ▀▀▀▀▀▀▀   |  OS: Fedora 41 (Workstation)
+  |   ▀▀▀▀▀▀▀   |  OS: Fedora 43 (Workstation)
   |  ███   ███  |  Host: portfolio.local
   |  ███   ███  |  Kernel: 6.12.0-fc41
   |  ▀▀▀▀▀▀▀▀▀  |  Shell: zsh 5.9
@@ -17,7 +17,7 @@ const neofetch = `
        ╱   ╲        Terminal: gnome-terminal
       ╱     ╲       CPU: Coffee @ 99%
                     Memory: 8GB / ∞
-                    Uptime: since 2026
+                    Uptime: since 2025
                     Status: Building cool stuff ⚡
 `;
 
@@ -57,13 +57,13 @@ const commands: Record<string, string | (() => string)> = {
   skills: `╔══════════════════════════════════════════════════════════════╗
 ║                      TECHNICAL SKILLS                        ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Languages:    Java, Python, C, JavaScript                   ║
+║  Languages:    Java, Python, JavaScript                      ║
 ║  Frontend:     HTML, CSS, JavaScript                         ║
 ║  Backend:      Java, JDBC                                    ║
 ║  Database:     MySQL                                         ║
 ║  Tools:        Git, GitHub, VS Code, IntelliJ IDEA           ║
 ║  OS:           Linux (Fedora 🎩)                             ║
-║  Frameworks:   JavaFX, Swing                                 ║
+║  Frameworks:   Spring Boot (REST APIs, Data JPA)             ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   projects: `╔══════════════════════════════════════════════════════════════╗
