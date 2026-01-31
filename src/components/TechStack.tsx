@@ -1,14 +1,14 @@
 import { 
   Coffee, 
-  Code2, 
   Database, 
   GitBranch, 
   Github, 
-  MonitorSmartphone,
   Lightbulb,
   Terminal,
   Package,
-  Send
+  Send,
+  Leaf,
+  Layers
 } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
@@ -42,24 +42,40 @@ const skillCategories: SkillCategory[] = [
           </svg>
         )
       },
+    ]
+  },
+  {
+    title: "Framework",
+    items: [
       { 
-        name: "C", 
-        color: "#A8B9CC",
-        icon: Code2
+        name: "Spring Boot", 
+        color: "#6DB33F",
+        icon: Leaf
       },
       { 
-        name: "JavaScript", 
-        color: "#F7DF1E",
-        customIcon: (
-          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-            <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
-          </svg>
-        )
+        name: "REST APIs", 
+        color: "#10B981",
+        icon: Layers
+      },
+      { 
+        name: "Data JPA", 
+        color: "#6DB33F",
+        icon: Database
       },
     ]
   },
   {
-    title: "Frontend",
+    title: "Database",
+    items: [
+      { 
+        name: "MySQL", 
+        color: "#4479A1",
+        icon: Database
+      },
+    ]
+  },
+  {
+    title: "Web Technologies",
     items: [
       { 
         name: "HTML", 
@@ -79,20 +95,14 @@ const skillCategories: SkillCategory[] = [
           </svg>
         )
       },
-    ]
-  },
-  {
-    title: "Backend & DB",
-    items: [
       { 
-        name: "MySQL", 
-        color: "#4479A1",
-        icon: Database
-      },
-      { 
-        name: "Maven", 
-        color: "#C71A36",
-        icon: Package
+        name: "JavaScript", 
+        color: "#F7DF1E",
+        customIcon: (
+          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+            <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+          </svg>
+        )
       },
     ]
   },
@@ -110,24 +120,29 @@ const skillCategories: SkillCategory[] = [
         icon: Github
       },
       { 
-        name: "VS Code", 
-        color: "#007ACC",
-        icon: MonitorSmartphone
-      },
-      { 
-        name: "IntelliJ", 
+        name: "IntelliJ IDEA", 
         color: "#FE315D",
         icon: Lightbulb
-      },
-      { 
-        name: "Linux", 
-        color: "#FCC624",
-        icon: Terminal
       },
       { 
         name: "Postman", 
         color: "#FF6C37",
         icon: Send
+      },
+      { 
+        name: "Maven", 
+        color: "#C71A36",
+        icon: Package
+      },
+    ]
+  },
+  {
+    title: "Operating Systems",
+    items: [
+      { 
+        name: "Linux", 
+        color: "#FCC624",
+        icon: Terminal
       },
     ]
   },
