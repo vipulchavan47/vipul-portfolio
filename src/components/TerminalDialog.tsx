@@ -333,10 +333,10 @@ Type 'help' for available commands.`,
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <button
-          className="p-2 rounded-lg border border-border bg-card hover:bg-secondary transition-colors"
+          className="p-2.5 rounded-lg border border-border bg-card hover:bg-secondary transition-all duration-300 hover:scale-110 hover:border-primary/50 group"
           aria-label="Open Terminal"
         >
-          <Terminal className="w-4 h-4 text-foreground" />
+          <Terminal className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-300" />
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl p-0 bg-[#0d0d0d] border-[#3c6eb4]/30 overflow-hidden">
