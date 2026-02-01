@@ -30,7 +30,7 @@ const SocialLinks = () => {
           key={button.label}
           variant="outline"
           size="sm"
-          className="gap-2 font-mono text-xs"
+          className="gap-2 font-mono text-xs transition-all duration-300 hover:scale-105 hover:border-primary/50"
           asChild
         >
           <a 
@@ -38,7 +38,7 @@ const SocialLinks = () => {
             target={button.external ? "_blank" : undefined}
             rel={button.external ? "noopener noreferrer" : undefined}
           >
-            <button.icon className="w-4 h-4" />
+            <button.icon className="w-5 h-5" />
             {button.label}
           </a>
         </Button>
