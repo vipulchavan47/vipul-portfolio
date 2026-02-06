@@ -42,28 +42,28 @@ const commands: Record<string, string | (() => string)> = {
   about: `╔══════════════════════════════════════════════════════════════╗
 ║                        ABOUT ME                              ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Name: Vipul Chavan                                          ║
-║  Role: Software Engineer                                     ║
-║  Education: B.E. in Information Technology (2026)            ║
-║  Location: Navi Mumbai, India                                ║
+║  Name:      Vipul Chavan                                     ║
+║  Role:      Software Engineer                                ║
+║  Location:  Navi Mumbai, India                               ║
+║  OS:        Fedora                                           ║
+║  Status:    Available for work ●                             ║
 ║                                                              ║
-║  I'm an IT undergraduate with a strong foundation in         ║
-║  Java and MySQL. I enjoy building efficient software         ║
-║  solutions, solving real-world problems through code,        ║
-║  and strengthening my problem-solving skills through         ║
-║  consistent DSA practice.                                    ║
+║  Information Technology undergraduate with a strong          ║
+║  foundation in Java and MySQL. Hands-on experience           ║
+║  building REST APIs, with a focus on clean code and          ║
+║  layered design. Regularly practice data structures          ║
+║  and algorithms to strengthen problem-solving skills.        ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   skills: `╔══════════════════════════════════════════════════════════════╗
 ║                      TECHNICAL SKILLS                        ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Languages:    Java, Python, JavaScript                      ║
-║  Frontend:     HTML, CSS, JavaScript                         ║
-║  Backend:      Java, JDBC                                    ║
-║  Database:     MySQL                                         ║
-║  Tools:        Git, GitHub, VS Code, IntelliJ IDEA           ║
-║  OS:           Linux (Fedora 🎩)                             ║
-║  Frameworks:   Spring Boot (REST APIs, Data JPA)             ║
+║  Languages:       Java, Python                               ║
+║  Framework:       Spring Boot (REST APIs, Data JPA)          ║
+║  Database:        MySQL                                      ║
+║  Web Tech:        HTML, CSS, JavaScript                      ║
+║  Tools:           Git, GitHub, IntelliJ IDEA, Postman, Maven ║
+║  OS:              Linux (Fedora 🎩)                          ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   projects: `╔══════════════════════════════════════════════════════════════╗
@@ -71,14 +71,14 @@ const commands: Record<string, string | (() => string)> = {
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
 ║  [01] Expense Tracker Application                            ║
-║       → Desktop app to record & manage daily expenses        ║
+║       → Record, categorize & manage daily expenses           ║
 ║       → CRUD operations, filtering, summary reports          ║
 ║       → Tech: Java, MySQL, JDBC, JavaFX                      ║
 ║                                                              ║
-║  [02] Employee Management Application                        ║
-║       → Java-based system to manage employee records         ║
-║       → Complete CRUD functionality with database            ║
-║       → Tech: Java, MySQL, Swing                             ║
+║  [02] Task Management REST API                               ║
+║       → RESTful backend with full CRUD & layered arch        ║
+║       → DTOs, JPA-based persistence, Postman tested          ║
+║       → Tech: Java, Spring Boot, Spring Data JPA, MySQL      ║
 ║                                                              ║
 ║  Type 'projects --open' to view on GitHub                    ║
 ╚══════════════════════════════════════════════════════════════╝`,
@@ -91,13 +91,15 @@ const commands: Record<string, string | (() => string)> = {
 ║  GitHub:    github.com/vipulchavan47                         ║
 ║  LinkedIn:  linkedin.com/in/vipulchavan47                    ║
 ║  LeetCode:  leetcode.com/u/vipulcx                           ║
+║  Resume:    Available on Google Drive                        ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝`,
 
   whoami: `vipul_chavan
+Software Engineer | Navi Mumbai, India
 A software engineer who thinks debugging is just aggressive negotiating with the code.
 Currently running on caffeine and curiosity.
-Status: Compiling dreams... ⚙️`,
+Status: Available for work ● | Compiling dreams... ⚙️`,
 
   neofetch: neofetch,
 
@@ -137,25 +139,30 @@ drwxr-xr-x  skills/
 
   "ls skills": `📁 skills/
 ├── languages/
-│   ├── java.rs        ⭐⭐⭐⭐⭐
-│   ├── python.py      ⭐⭐⭐⭐
-│   ├── javascript.js  ⭐⭐⭐
-│   └── c.c            ⭐⭐⭐
-├── databases/
-│   └── mysql.sql      ⭐⭐⭐⭐
+│   ├── java           ⭐⭐⭐⭐⭐
+│   └── python         ⭐⭐⭐⭐
+├── framework/
+│   └── spring-boot    ⭐⭐⭐⭐
+├── database/
+│   └── mysql          ⭐⭐⭐⭐
+├── web-tech/
+│   ├── html           ⭐⭐⭐⭐
+│   ├── css            ⭐⭐⭐⭐
+│   └── javascript     ⭐⭐⭐
 ├── tools/
 │   ├── git            ⭐⭐⭐⭐
-│   ├── linux          ⭐⭐⭐⭐
-│   └── vscode         ⭐⭐⭐⭐⭐
-└── soft_skills/
-    ├── problem_solving ⭐⭐⭐⭐⭐
-    └── debugging       ⭐⭐⭐⭐ (it's a love-hate thing)`,
+│   ├── github         ⭐⭐⭐⭐
+│   ├── intellij-idea  ⭐⭐⭐⭐⭐
+│   ├── postman        ⭐⭐⭐⭐
+│   └── maven          ⭐⭐⭐
+└── os/
+    └── linux (fedora)  ⭐⭐⭐⭐`,
 
   "ls projects": `📁 projects/
-├── expense-tracker/     [Java, MySQL, JavaFX]
-├── employee-manager/    [Java, MySQL, Swing]
-├── portfolio-website/   [React, TypeScript] ← you are here
-└── secret-project/      [Coming Soon™]`,
+├── expense-tracker/      [Java, MySQL, JDBC, JavaFX]
+├── task-manager-api/     [Java, Spring Boot, JPA, MySQL]
+├── portfolio-website/    [React, TypeScript] ← you are here
+└── secret-project/       [Coming Soon™]`,
 
   sudo: `[sudo] password for vipul: ********
 Nice try! But you don't have sudo privileges here. 🔒
