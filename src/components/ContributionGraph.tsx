@@ -26,18 +26,62 @@ const LeetCodeStats = () => {
   const mediumStroke = (mediumPercent / 100) * circumference;
   const hardStroke = (hardPercent / 100) * circumference;
 
+  const getDifficultyGlow = (difficulty: 'easy' | 'medium' | 'hard') => {
+    const glows = {
+      easy: '0 0 30px rgba(16,185,129,0.4)',
+      medium: '0 0 30px rgba(245,158,11,0.4)',
+      hard: '0 0 30px rgba(244,63,94,0.4)',
+    };
+    return glows[difficulty];
+  };
+
   return (
     <section className="py-12 px-6">
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(-90deg); }
+          to { transform: rotate(270deg); }
+        }
+        .ring-spin:hover {
+          filter: drop-shadow(0 0 6px currentColor);
+        }
+        @keyframes float-card {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-3px); }
+        }
+        .difficulty-card-active {
+          animation: float-card 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse-center {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.04); }
+        }
+        .center-pulse {
+          animation: pulse-center 2s ease-in-out infinite;
+        }
+      `}</style>
       <div className="container mx-auto max-w-4xl">
         <h3 className="text-lg md:text-xl font-semibold font-mono text-foreground mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
           LeetCode Progress
         </h3>
         
-        <div className="bg-card border border-border rounded-xl p-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+        <div 
+          className="bg-card border border-border rounded-xl p-8 opacity-0 animate-fade-in transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
+          style={{ animationDelay: "0.5s" }}
+        >
           <div className="flex items-center justify-center gap-8 flex-wrap">
             {/* Left: Circular Progress */}
-            <div className="relative w-48 h-48">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
+            <div className="relative w-48 h-48 group">
+              <svg 
+                className="w-full h-full -rotate-90 transition-transform duration-700 group-hover:scale-105" 
+                viewBox="0 0 160 160"
+                style={{
+                  filter: hoveredDifficulty
+                    ? `drop-shadow(${getDifficultyGlow(hoveredDifficulty)})`
+                    : 'none',
+                  transition: 'filter 0.3s ease',
+                }}
+              >
                 {/* Background circle */}
                 <circle
                   cx="80"
@@ -48,58 +92,83 @@ const LeetCodeStats = () => {
                   strokeWidth="8"
                   opacity="0.3"
                 />
-                {/* Easy (emerald) - starts at 0 */}
+                {/* Easy (emerald) */}
                 <circle
                   cx="80"
                   cy="80"
                   r={radius}
                   fill="none"
                   stroke="#10b981"
-                  strokeWidth={hoveredDifficulty === 'easy' ? 12 : 8}
+                  strokeWidth={hoveredDifficulty === 'easy' ? 13 : 8}
                   strokeDasharray={`${easyStroke} ${circumference}`}
                   strokeDashoffset="0"
-                  className="transition-all duration-300 cursor-pointer"
+                  opacity={hoveredDifficulty && hoveredDifficulty !== 'easy' ? 0.35 : 1}
+                  className="transition-all duration-400 cursor-pointer"
+                  style={{ transition: 'stroke-width 0.3s ease, opacity 0.3s ease' }}
                   onMouseEnter={() => setHoveredDifficulty('easy')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
                 />
-                {/* Medium (amber) - starts after easy */}
+                {/* Medium (amber) */}
                 <circle
                   cx="80"
                   cy="80"
                   r={radius}
                   fill="none"
                   stroke="#f59e0b"
-                  strokeWidth={hoveredDifficulty === 'medium' ? 12 : 8}
+                  strokeWidth={hoveredDifficulty === 'medium' ? 13 : 8}
                   strokeDasharray={`${mediumStroke} ${circumference}`}
                   strokeDashoffset={-easyStroke}
-                  className="transition-all duration-300 cursor-pointer"
+                  opacity={hoveredDifficulty && hoveredDifficulty !== 'medium' ? 0.35 : 1}
+                  className="transition-all duration-400 cursor-pointer"
+                  style={{ transition: 'stroke-width 0.3s ease, opacity 0.3s ease' }}
                   onMouseEnter={() => setHoveredDifficulty('medium')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
                 />
-                {/* Hard (red) - starts after easy + medium */}
+                {/* Hard (rose) */}
                 <circle
                   cx="80"
                   cy="80"
                   r={radius}
                   fill="none"
                   stroke="#f43f5e"
-                  strokeWidth={hoveredDifficulty === 'hard' ? 12 : 8}
+                  strokeWidth={hoveredDifficulty === 'hard' ? 13 : 8}
                   strokeDasharray={`${hardStroke} ${circumference}`}
                   strokeDashoffset={-(easyStroke + mediumStroke)}
-                  className="transition-all duration-300 cursor-pointer"
+                  opacity={hoveredDifficulty && hoveredDifficulty !== 'hard' ? 0.35 : 1}
+                  className="transition-all duration-400 cursor-pointer"
+                  style={{ transition: 'stroke-width 0.3s ease, opacity 0.3s ease' }}
                   onMouseEnter={() => setHoveredDifficulty('hard')}
                   onMouseLeave={() => setHoveredDifficulty(null)}
                 />
               </svg>
               
               {/* Center text */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="text-4xl font-bold text-foreground">
-                  {stats.solved}<span className="text-lg text-muted-foreground">/{stats.total}</span>
+              <div className={`absolute inset-0 flex flex-col items-center justify-center transition-transform duration-300 ${hoveredDifficulty ? 'center-pulse' : ''}`}>
+                <div className="text-4xl font-bold text-foreground transition-all duration-300">
+                  {hoveredDifficulty === 'easy' ? stats.easy.solved :
+                   hoveredDifficulty === 'medium' ? stats.medium.solved :
+                   hoveredDifficulty === 'hard' ? stats.hard.solved :
+                   stats.solved}
+                  <span className="text-lg text-muted-foreground">
+                    /{hoveredDifficulty === 'easy' ? stats.easy.total :
+                       hoveredDifficulty === 'medium' ? stats.medium.total :
+                       hoveredDifficulty === 'hard' ? stats.hard.total :
+                       stats.total}
+                  </span>
                 </div>
-                <div className="flex items-center gap-1 text-emerald-400 text-sm mt-1">
+                <div className={`flex items-center gap-1 text-sm mt-1 transition-colors duration-300 ${
+                  hoveredDifficulty === 'easy' ? 'text-emerald-400' :
+                  hoveredDifficulty === 'medium' ? 'text-amber-400' :
+                  hoveredDifficulty === 'hard' ? 'text-rose-400' :
+                  'text-emerald-400'
+                }`}>
                   <span className="text-xs">✓</span>
-                  <span>Solved</span>
+                  <span>
+                    {hoveredDifficulty === 'easy' ? 'Easy' :
+                     hoveredDifficulty === 'medium' ? 'Medium' :
+                     hoveredDifficulty === 'hard' ? 'Hard' :
+                     'Solved'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -108,45 +177,63 @@ const LeetCodeStats = () => {
             <div className="flex flex-col gap-3">
               {/* Easy */}
               <div 
-                className={`bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
-                  hoveredDifficulty === 'easy' ? 'shadow-[0_0_20px_rgba(16,185,129,0.5)] border-emerald-400 scale-105' : ''
-                }`}
+                className={`border rounded-lg px-6 py-3 min-w-[140px] cursor-pointer select-none
+                  transition-all duration-300
+                  bg-emerald-500/10 border-emerald-500/30
+                  ${hoveredDifficulty === 'easy' 
+                    ? 'difficulty-card-active border-emerald-400 bg-emerald-500/20 shadow-[0_0_24px_rgba(16,185,129,0.45)] scale-105 -translate-x-1' 
+                    : hoveredDifficulty 
+                      ? 'opacity-50 scale-95' 
+                      : 'hover:scale-105 hover:border-emerald-400 hover:bg-emerald-500/15 hover:shadow-[0_0_16px_rgba(16,185,129,0.25)]'
+                  }`}
                 onMouseEnter={() => setHoveredDifficulty('easy')}
                 onMouseLeave={() => setHoveredDifficulty(null)}
               >
-                <div className="text-emerald-400 font-semibold text-sm">Easy</div>
+                <div className="text-emerald-400 font-semibold text-sm tracking-wide">Easy</div>
                 <div className="text-foreground font-mono">
-                  <span className="font-bold">{stats.easy.solved}</span>
+                  <span className="font-bold text-lg">{stats.easy.solved}</span>
                   <span className="text-muted-foreground text-sm">/{stats.easy.total}</span>
                 </div>
               </div>
               
               {/* Medium */}
               <div 
-                className={`bg-amber-500/10 border border-amber-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
-                  hoveredDifficulty === 'medium' ? 'shadow-[0_0_20px_rgba(245,158,11,0.5)] border-amber-400 scale-105' : ''
-                }`}
+                className={`border rounded-lg px-6 py-3 min-w-[140px] cursor-pointer select-none
+                  transition-all duration-300
+                  bg-amber-500/10 border-amber-500/30
+                  ${hoveredDifficulty === 'medium' 
+                    ? 'difficulty-card-active border-amber-400 bg-amber-500/20 shadow-[0_0_24px_rgba(245,158,11,0.45)] scale-105 -translate-x-1' 
+                    : hoveredDifficulty 
+                      ? 'opacity-50 scale-95' 
+                      : 'hover:scale-105 hover:border-amber-400 hover:bg-amber-500/15 hover:shadow-[0_0_16px_rgba(245,158,11,0.25)]'
+                  }`}
                 onMouseEnter={() => setHoveredDifficulty('medium')}
                 onMouseLeave={() => setHoveredDifficulty(null)}
               >
-                <div className="text-amber-400 font-semibold text-sm">Med.</div>
+                <div className="text-amber-400 font-semibold text-sm tracking-wide">Medium</div>
                 <div className="text-foreground font-mono">
-                  <span className="font-bold">{stats.medium.solved}</span>
+                  <span className="font-bold text-lg">{stats.medium.solved}</span>
                   <span className="text-muted-foreground text-sm">/{stats.medium.total}</span>
                 </div>
               </div>
               
               {/* Hard */}
               <div 
-                className={`bg-rose-500/10 border border-rose-500/30 rounded-lg px-6 py-3 min-w-[120px] transition-all duration-300 cursor-pointer ${
-                  hoveredDifficulty === 'hard' ? 'shadow-[0_0_20px_rgba(244,63,94,0.5)] border-rose-400 scale-105' : ''
-                }`}
+                className={`border rounded-lg px-6 py-3 min-w-[140px] cursor-pointer select-none
+                  transition-all duration-300
+                  bg-rose-500/10 border-rose-500/30
+                  ${hoveredDifficulty === 'hard' 
+                    ? 'difficulty-card-active border-rose-400 bg-rose-500/20 shadow-[0_0_24px_rgba(244,63,94,0.45)] scale-105 -translate-x-1' 
+                    : hoveredDifficulty 
+                      ? 'opacity-50 scale-95' 
+                      : 'hover:scale-105 hover:border-rose-400 hover:bg-rose-500/15 hover:shadow-[0_0_16px_rgba(244,63,94,0.25)]'
+                  }`}
                 onMouseEnter={() => setHoveredDifficulty('hard')}
                 onMouseLeave={() => setHoveredDifficulty(null)}
               >
-                <div className="text-rose-400 font-semibold text-sm">Hard</div>
+                <div className="text-rose-400 font-semibold text-sm tracking-wide">Hard</div>
                 <div className="text-foreground font-mono">
-                  <span className="font-bold">{stats.hard.solved}</span>
+                  <span className="font-bold text-lg">{stats.hard.solved}</span>
                   <span className="text-muted-foreground text-sm">/{stats.hard.total}</span>
                 </div>
               </div>
